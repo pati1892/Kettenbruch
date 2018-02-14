@@ -16,6 +16,8 @@ public class Fraction {
 
     @Override
     public String toString() {
+
+
         int main;
         int nr;
         int dr;
@@ -33,17 +35,19 @@ public class Fraction {
         if(((main - numerator.width())/2)%1 > 0 ){
             leftn = ((main - numerator.width()) + 1)/2;
             rightn = main - numerator.width() - leftn;
+        }else {
+            leftn = (main - numerator.width()) / 2;
+            rightn = leftn;
         }
-        leftn = (main - numerator.width()) / 2;
-        rightn = leftn;
 
         //Nenner zentrieren
         if(((main - denominator.width())/2)%1 > 0 ){
             leftd = ((main - denominator.width()) + 1)/2;
             rightd = main - denominator.width() - leftd;
+        }else {
+            leftd = (main - denominator.width()) / 2;
+            rightd = leftd;
         }
-        leftd = (main - denominator.width()) / 2;
-        rightd = leftd;
 
         StringBuilder Str = new StringBuilder();
 
