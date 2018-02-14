@@ -3,7 +3,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-public class Operator {
+public class Operator implements Element {
 
     private Element left;
     private Element right;
@@ -13,10 +13,15 @@ public class Operator {
         if(left == null || operator == null || right == null){
             throw new NullPointerException();
         }
+        if(operator.contains("\n")) {
+            String[] temp = operator.split("\n");
+            this.operator = temp[0];
+        }else{
+            this.operator = operator;
+        }
 
         this.left = left;
         this.right = right;
-        this.operator = operator;
 
     }
 
@@ -118,5 +123,19 @@ public class Operator {
     public int hashCode() {
 
         return Objects.hash(left, right, operator);
+    }
+
+    @Override
+    public int width() {
+        return this.left.width() + this.operator.length() + this.right.width();
+    }
+
+    @Override
+    public int lineCount() {
+        if(left.lineCount() > right.lineCount()){
+            return left.lineCount();
+        }else{
+            return right.lineCount();
+        }
     }
 }

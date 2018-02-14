@@ -1,6 +1,6 @@
 import java.util.Objects;
 
-public class Term {
+public class Term implements Element {
 
     private String term;
 
@@ -10,8 +10,12 @@ public class Term {
         if(term == null){
             throw new NullPointerException();
         }
-        String[] temp = term.split("\n");
-        this.term = temp[0];
+        if(term.contains("\n")) {
+            String[] temp = term.split("\n");
+            this.term = temp[0];
+        }else {
+            this.term = term;
+        }
     }
 
     @Override
@@ -31,5 +35,15 @@ public class Term {
     @Override
     public String toString() {
         return this.term;
+    }
+
+    @Override
+    public int width() {
+        return this.term.length();
+    }
+
+    @Override
+    public int lineCount() {
+        return 1;
     }
 }

@@ -1,4 +1,4 @@
-public class Fraction {
+public class Fraction implements Element {
 
     private Element numerator;
     private Element denominator;
@@ -17,10 +17,7 @@ public class Fraction {
     @Override
     public String toString() {
 
-
         int main;
-        int nr;
-        int dr;
         int leftn;
         int rightn;
         int leftd;
@@ -80,5 +77,21 @@ public class Fraction {
         }
 
         return Str.toString();
+    }
+
+    @Override
+    public int width() {
+        if(this.numerator.width() > this.denominator.width()){
+            return this.numerator.width() + 2;
+        }
+        return this.denominator.width() + 2;
+    }
+
+    @Override
+    public int lineCount() {
+        if(this.numerator.lineCount() > this.denominator.lineCount()){
+            return this.numerator.lineCount();
+        }
+        return this.denominator.lineCount();
     }
 }
