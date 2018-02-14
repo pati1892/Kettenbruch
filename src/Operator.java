@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class Operator {
 
@@ -101,5 +102,21 @@ public class Operator {
         }
 
         return str.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Operator)) return false;
+        Operator operator1 = (Operator) o;
+        return Objects.equals(left, operator1.left) &&
+                Objects.equals(right, operator1.right) &&
+                Objects.equals(operator, operator1.operator);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(left, right, operator);
     }
 }
