@@ -27,11 +27,20 @@ public class Parser {
 
     private static Element parseInput(String input){
         input = input.trim();
-        input = removeBracket(input);
-        if(input.contains(String.valueOf(FRACTION))){
 
+        if (!input.contains(String.valueOf(FRACTION))) {
+            Term neu = new Term(input);
+            return neu;
         }
 
+        input = removeBracket(input);
+        if(input.contains(String.valueOf(FRACTION))){
+            return new Fraction(parseInput(), parseInput());
+        }
+
+
+
+        return null;
     }
 
     private static String removeBracket(String input){
@@ -47,7 +56,7 @@ public class Parser {
             }
         }
         if(remove){
-            return removeBracket(input.substring(1, input.length()-1));
+            return removeBracket(input.substring(1, input.length()-2));
         }
         else{
             return input;
