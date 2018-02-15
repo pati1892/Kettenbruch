@@ -1,3 +1,5 @@
+package de.uniwue.jpp.fractions;
+
 import java.util.regex.Pattern;
 
 public class Parser {

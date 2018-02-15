@@ -1,3 +1,5 @@
+package de.uniwue.jpp.fractions;
+
 import java.util.Objects;
 
 public class Term implements Element {

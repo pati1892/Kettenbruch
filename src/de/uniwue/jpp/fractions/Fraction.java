@@ -1,3 +1,5 @@
+package de.uniwue.jpp.fractions;
+
 public class Fraction implements Element {
 
     private Element numerator;
