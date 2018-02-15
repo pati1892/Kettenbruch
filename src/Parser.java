@@ -32,15 +32,33 @@ public class Parser {
             Term neu = new Term(input);
             return neu;
         }
-
         input = removeBracket(input);
-        if(input.contains(String.valueOf(FRACTION))){
-            return new Fraction(parseInput(), parseInput());
+
+        String[] fraction = findFraction(input);
+        if(fraction.length == 2){
+            return new Fraction(parseInput(fraction[0]), parseInput(fraction[1]));
         }
 
 
 
         return null;
+    }
+
+    private static String[] findFraction(String input){
+        int counter = 0;
+        int index = -1;
+        for(int i = 0; i<input.length(); i++) {
+            if(input.charAt(i) == OPEN) counter++;
+            else if(input.charAt(i) == CLOSE) counter --;
+            else if((input.charAt(i) == FRACTION) && (counter == 0)){
+                index = i;
+                break;
+            }
+        }
+        String nenner = input.substring(0, index-1);
+        String zaehler = input.substring(index+1, input.length()-1);
+        return new String[]{nenner, zaehler};
+
     }
 
     private static String removeBracket(String input){
