@@ -26,9 +26,18 @@ public class Fraction implements Element {
         int rightd;
 
         if(this.numerator.width() > this.denominator.width()){
+            if(this.numerator.toString().contains(String.valueOf('\u0028'))){
+                main = this.numerator.width();
+            }else{
             main = this.numerator.width() + 2;
+            }
+
         }else{
-            main = this.denominator.width() + 2;
+            if(this.denominator.toString().contains(String.valueOf('\u0028'))){
+                main = this.denominator.width();
+            }else {
+                main = this.denominator.width() + 2;
+            }
         }
         //Zähler zentrieren
         if(((main - numerator.width())/2)%1 > 0 ){

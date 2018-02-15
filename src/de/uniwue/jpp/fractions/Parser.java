@@ -10,9 +10,9 @@ public class Parser {
 
 
     public static Element parse(String input){
-        /*if(input.length() - input.replaceAll(String.valueOf(OPEN),"").length() != input.length() - input.replaceAll(String.valueOf(CLOSE),"").length()){
+        if(input.length() - input.replace(String.valueOf(OPEN),"").length() != input.length() - input.replace(String.valueOf(CLOSE),"").length()){
             throw new IllegalArgumentException();
-        }*/
+        }
         if(Pattern.matches(FRACTION + "{2,}", input)){
             throw new IllegalArgumentException("//");
         }
@@ -28,6 +28,7 @@ public class Parser {
 
         String[] fraction = findFraction(input);
         if(fraction != null && fraction.length == 2){
+            System.out.println(fraction[0] +" " + fraction[1]);
             return new Fraction(parse(fraction[0]), parse(fraction[1]));
         }
 
@@ -85,7 +86,6 @@ public class Parser {
     }
 
     private static String removeBracket(String input){
-        System.out.println("remove brackets: " +input);
         int counter = 0;
         boolean remove = false;
         for(int i = 0; i<input.length(); i++){
@@ -104,5 +104,10 @@ public class Parser {
         else{
             return input;
         }
+    }
+
+    public static void main(String[] args) {
+        String test ="(1)/(1)/(2+3i ⊕ (b))";
+        System.out.print(parse(test));
     }
 }
