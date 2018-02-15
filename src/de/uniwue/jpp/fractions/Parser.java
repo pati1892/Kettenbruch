@@ -9,11 +9,10 @@ public class Parser {
     private static final char CLOSE = '\u0029';
 
 
-
     public static Element parse(String input){
-        if(input.length() - input.replaceAll(String.valueOf(OPEN),"").length() != input.length() - input.replaceAll(String.valueOf(CLOSE),"").length()){
+        /*if(input.length() - input.replaceAll(String.valueOf(OPEN),"").length() != input.length() - input.replaceAll(String.valueOf(CLOSE),"").length()){
             throw new IllegalArgumentException();
-        }
+        }*/
         if(Pattern.matches(FRACTION + "{2,}", input)){
             throw new IllegalArgumentException("//");
         }
@@ -44,23 +43,25 @@ public class Parser {
         String operant_2 = "";
         String operator = "";
 
+
         int index = 0;
         for (int i = 0; i < input.length(); i++) {
             if (input.charAt(i) == OPEN) {
                 index = i;
             } else if (input.charAt(i) == CLOSE) {
                 if (operant_1.equals(""))
-                    operant_1 = input.substring(index, i);
+                    operant_1 = input.substring(index, i+1);
                 else
-                    operant_2 = input.substring(index, i);
+                    operant_2 = input.substring(index, i+1);
 
             }
-            operator = input.replaceAll(operant_1, "");
-            operator = operator.replaceAll(operant_2, "");
-            if (operant_2.equals("")) {
-                operant_2 = operant_1;
-                operant_1 = "";
-            }
+
+        }
+        operator = input.replace(operant_1, "");
+        operator = operator.replace(operant_2, "");
+        if (operant_2.equals("")) {
+            operant_2 = operant_1;
+            operant_1 = "";
         }
         return new String[]{operant_1, operator, operant_2};
     }
@@ -77,13 +78,14 @@ public class Parser {
             }
         }
         if(index == -1) return null;
-        String nenner = input.substring(0, index-1);
-        String zaehler = input.substring(index+1, input.length()-1);
+        String nenner = input.substring(0, index);
+        String zaehler = input.substring(index+1, input.length());
         return new String[]{nenner, zaehler};
 
     }
 
     private static String removeBracket(String input){
+        System.out.println("remove brackets: " +input);
         int counter = 0;
         boolean remove = false;
         for(int i = 0; i<input.length(); i++){
@@ -93,10 +95,11 @@ public class Parser {
                 if(i == input.length()-1){
                     remove = true;
                 }
+                break;
             }
         }
         if(remove){
-            return removeBracket(input.substring(1, input.length()-2));
+            return removeBracket(input.substring(1, input.length()-1));
         }
         else{
             return input;
