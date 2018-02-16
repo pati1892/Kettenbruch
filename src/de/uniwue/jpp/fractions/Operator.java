@@ -36,8 +36,8 @@ public class Operator implements Element {
             height = this.right.lineCount();
         }
 
-        System.out.println("links: " + this.left.toString());
-        System.out.println("rechts: " + this.right.toString() + ";");
+        //System.out.println("links: " + this.left.toString());
+        //System.out.println("rechts: " + this.right.toString() + ";");
 
         String[] left = this.left.toString().split("\n");
         String[] right = this.right.toString().split("\n");

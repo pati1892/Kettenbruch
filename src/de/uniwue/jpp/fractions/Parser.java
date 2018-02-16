@@ -46,14 +46,21 @@ public class Parser {
         String operant_1 = "";
         String operant_2 = "";
         String operator = "";
+        String[] temp = new String[3];
 
-
-        int index = 0;
+        int o12index = -1;
+        int oindex = -1;
         int i=0;
         while(i < input.length()) {
 
+            if(input.charAt(i) != OPEN && oindex < 0){
+                oindex = i;
+            }
+
+
             if(input.charAt(i) == OPEN && counter == 0) {
-                index = i;
+                o12index = i;
+                operator = input.substring(oindex, i);
             }
 
             if (input.charAt(i) == OPEN) {
@@ -63,27 +70,46 @@ public class Parser {
             }
 
             if (input.charAt(i) == CLOSE) {
-                if (counter == 0) {
+                if (counter == 0 && oindex == 0) {
+                    operant_2 = input.substring(o12index, i + 1);
+                    break;
+                }
+                else if(counter == 0 && oindex != 0){
                     if (operant_1.equals(""))
-                        operant_1 = input.substring(index, i + 1);
+                        operant_1 = input.substring(o12index, i + 1);
                     else {
-                        operant_2 = input.substring(index, i + 1);
+                        operant_2 = input.substring(o12index, i + 1);
                     }
 
                 }
+
             }
             i++;
         }
-        operator = input.replace(operant_1, "");
-        operator = operator.replace(operant_2, "");
+        if(operator == "") {
+            operator = input.replace(operant_1, "");
+            operator = operator.replace(operant_2, "");
+        }
+
+        input = input.replace(operant_1,"");
+        input = input.replace(operant_2,"");
+        input = input.replace(operator,"");
+
+        if(!input.equals("")){
+            temp = findOperator(input);
+            operant_1 = new Operator(parse(operant_1),operator,parse(operant_2)).toString() + temp[0];
+            operator = temp[1];
+            operant_2 = temp[2];
+        }
+        System.out.println("o1: " + operant_1);
+        System.out.println(operator);
+        System.out.println("o2: " + operant_2);
 
         if (operant_2.equals("")) {
             operant_2 = operant_1;
             operant_1 = "";
         }
-        //System.out.println("o1: " + operant_1);
-        //System.out.println(operator);
-        //System.out.println("o2: " + operant_2);
+
         return new String[]{operant_1, operator, operant_2};
     }
 
