@@ -54,7 +54,7 @@ public class Fraction implements Element {
           //  System.out.println("gerade:" + rightnu + "," + leftnu + " " + this.numerator + " " + "Main:" + main + ";");
         }
 
-        System.out.println("Zaehler: " + this.numerator + "," + main + "," + rightnu + "," +leftnu + ";");
+        //System.out.println("Zaehler: " + this.numerator + "," + main + "," + rightnu + "," +leftnu + ";");
 
         //Nenner zentrieren
         if((main - this.denominator.width()) % 2 > 0 ){
@@ -64,7 +64,7 @@ public class Fraction implements Element {
             rightde = (main - this.denominator.width()) / 2;
             leftde = rightde;
         }
-        System.out.println("Nenner: " + this.denominator + "," + main + "," + rightde + "," +leftde + ";");
+        //System.out.println("Nenner: " + this.denominator + "," + main + "," + rightde + "," +leftde + ";");
 
         StringBuilder Str = new StringBuilder();
 
@@ -136,9 +136,9 @@ public class Fraction implements Element {
     @Override
     public int width() {
         if(this.numerator.width() > this.denominator.width()){
-            return this.numerator.width();
+            return this.numerator.width() + 2;
         }
-        return this.denominator.width() ;
+        return this.denominator.width() + 2;
     }
 
     @Override

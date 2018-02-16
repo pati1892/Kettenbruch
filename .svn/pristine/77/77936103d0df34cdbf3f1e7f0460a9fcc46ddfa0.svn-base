@@ -28,8 +28,7 @@ public class Parser {
 
         String[] fraction = findFraction(input);
         if(fraction != null && fraction.length == 2){
-            //System.out.println(";zaehler:" + fraction[0] +";nenner:" + fraction[1]);
-            //System.out.println(parse(fraction[0]) + "---"+ parse(fraction[1]));
+            //System.out.println("zaehler:" + fraction[0] +" nenner:" + fraction[1]);
             return new Fraction(parse(fraction[0]), parse(fraction[1]));
         }
 
@@ -131,11 +130,11 @@ public class Parser {
         }
     }
 
-    public static void main(String[] args) {
-        String test ="1 / ( 1 / x )";
+    /**public static void main(String[] args) {
+        String test ="((√15)!)/(∜(b) +  2x )";
         //String o1 = "(( log(y))/(1))";
         //String o2 = "(( z )/((5x)!))";
         //String op = "! + ";
         System.out.print(parse(test));
-    }
+    }*/
 }

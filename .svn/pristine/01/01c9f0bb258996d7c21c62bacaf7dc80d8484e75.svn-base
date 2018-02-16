@@ -28,14 +28,11 @@ public class Parser {
 
         String[] fraction = findFraction(input);
         if(fraction != null && fraction.length == 2){
-            //System.out.println(";zaehler:" + fraction[0] +";nenner:" + fraction[1]);
-            //System.out.println(parse(fraction[0]) + "---"+ parse(fraction[1]));
+            //System.out.println(fraction[0] +" " + fraction[1]);
             return new Fraction(parse(fraction[0]), parse(fraction[1]));
         }
 
         String[] operator = findOperator(input);
-
-        //System.out.println("o:" + parse(operator[0]) + "\n o:-" + operator[1] + "- \no:" + parse(operator[2]));
 
         return new Operator(parse(operator[0]), operator[1], parse(operator[2]));
 
@@ -49,41 +46,24 @@ public class Parser {
 
 
         int index = 0;
-        int i=0;
-        while(i < input.length()) {
-
-            if(input.charAt(i) == OPEN && counter == 0) {
-                index = i;
-            }
-
+        for (int i = 0; i < input.length(); i++) {
             if (input.charAt(i) == OPEN) {
-                counter ++;
-            }else if(input.charAt(i) == CLOSE) {
-                counter--;
+                index = i;
+            } else if (input.charAt(i) == CLOSE) {
+                if (operant_1.equals(""))
+                    operant_1 = input.substring(index, i+1);
+                else
+                    operant_2 = input.substring(index, i+1);
+
             }
 
-            if (input.charAt(i) == CLOSE) {
-                if (counter == 0) {
-                    if (operant_1.equals(""))
-                        operant_1 = input.substring(index, i + 1);
-                    else {
-                        operant_2 = input.substring(index, i + 1);
-                    }
-
-                }
-            }
-            i++;
         }
         operator = input.replace(operant_1, "");
         operator = operator.replace(operant_2, "");
-
         if (operant_2.equals("")) {
             operant_2 = operant_1;
             operant_1 = "";
         }
-        //System.out.println("o1: " + operant_1);
-        //System.out.println(operator);
-        //System.out.println("o2: " + operant_2);
         return new String[]{operant_1, operator, operant_2};
     }
 
@@ -91,12 +71,8 @@ public class Parser {
         int counter = 0;
         int index = -1;
         for(int i = input.length() - 1; i > 0; i--) {
-            if(input.charAt(i) == CLOSE) {
-                counter++;
-            }
-            else if(input.charAt(i) == OPEN){
-                counter --;
-            }
+            if(input.charAt(i) == OPEN) counter++;
+            else if(input.charAt(i) == CLOSE) counter --;
             else if((input.charAt(i) == FRACTION) && (counter == 0)){
                 index = i;
                 break;
@@ -105,7 +81,6 @@ public class Parser {
         if(index == -1) return null;
         String nenner = input.substring(0, index);
         String zaehler = input.substring(index+1, input.length());
-        //System.out.println("zeahler:" + zaehler + "nenner:" + nenner);
         return new String[]{nenner, zaehler};
 
     }
@@ -131,11 +106,8 @@ public class Parser {
         }
     }
 
-    public static void main(String[] args) {
-        String test ="1 / ( 1 / x )";
-        //String o1 = "(( log(y))/(1))";
-        //String o2 = "(( z )/((5x)!))";
-        //String op = "! + ";
+    /**public static void main(String[] args) {
+        String test ="(1)/(1)/(2+3i ⊕ (b))";
         System.out.print(parse(test));
-    }
+    }*/
 }

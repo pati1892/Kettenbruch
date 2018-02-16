@@ -24,71 +24,71 @@ public class Fraction implements Element {
     public String toString() {
 
         int main;
-        int rightnu;
-        int leftnu;
-        int rightde;
-        int leftde;
+        int leftn;
+        int rightn;
+        int leftd;
+        int rightd;
 
         if(this.numerator.width() > this.denominator.width()){
-            /**if(this.numerator.toString().contains(String.valueOf('\u0028'))){
+            if(this.numerator.toString().contains(String.valueOf('\u0028'))){
                 main = this.numerator.width();
-            }else{*/
+            }else{
             main = this.numerator.width() + 2;
-
+            }
 
         }else{
-            /**if(this.denominator.toString().contains(String.valueOf('\u0028'))){
+            if(this.denominator.toString().contains(String.valueOf('\u0028'))){
                 main = this.denominator.width();
-            }else {*/
+            }else {
                 main = this.denominator.width() + 2;
-
+            }
         }
         //Zähler zentrieren
         if((main - this.numerator.width()) % 2 > 0 ){
-            rightnu = ((main - this.numerator.width()) + 1)/2;
-            leftnu = main - this.numerator.width() - rightnu;
-            //System.out.println("ungerade:" + rightnu + "," + leftnu + " " + this.numerator + " " + "Main:" + main + ";");
+            leftn = ((main - this.numerator.width()) + 1)/2;
+            rightn = main - this.numerator.width() - leftn;
+            //System.out.println("ungerade:" + leftn + "," + rightn + " " + this.numerator + " " + "Main:" + main + ";");
         }else {
-            rightnu = (main - this.numerator.width()) / 2;
-            leftnu = rightnu;
-          //  System.out.println("gerade:" + rightnu + "," + leftnu + " " + this.numerator + " " + "Main:" + main + ";");
+            leftn = (main - this.numerator.width()) / 2;
+            rightn = leftn;
+          //  System.out.println("gerade:" + leftn + "," + rightn + " " + this.numerator + " " + "Main:" + main + ";");
         }
 
-        System.out.println("Zaehler: " + this.numerator + "," + main + "," + rightnu + "," +leftnu + ";");
+        //System.out.println("Zaehler: " + this.numerator + "," + main + "," + leftn + "," +rightn + ";");
 
         //Nenner zentrieren
         if((main - this.denominator.width()) % 2 > 0 ){
-            rightde = ((main - this.denominator.width()) + 1)/2;
-            leftde = main - this.denominator.width() - rightde;
+            leftd = ((main - this.denominator.width()) + 1)/2;
+            rightd = main - this.denominator.width() - leftd;
         }else {
-            rightde = (main - this.denominator.width()) / 2;
-            leftde = rightde;
+            leftd = (main - this.denominator.width()) / 2;
+            rightd = leftd;
         }
-        System.out.println("Nenner: " + this.denominator + "," + main + "," + rightde + "," +leftde + ";");
+        //System.out.println("Nenner: " + this.denominator + "," + main + "," + leftd + "," +rightd + ";");
 
         StringBuilder Str = new StringBuilder();
 
 
         if(this.numerator.toString().contains("\n")){
             String[] temp = this.numerator.toString().split("\n");
-            String re = "";
-            String li = "";
-            if(leftnu == rightnu){
-                for(int i = 0; i < leftnu; i++){
-                    li += '\u0020';
+            String l = "";
+            String r = "";
+            if(rightn == leftn){
+                for(int i = 0; i < rightn; i++){
+                    r += '\u0020';
                 }
-                re = li;
+                l = r;
             }else{
-                for(int i = 0; i < leftnu; i++){
-                    li += '\u0020';
+                for(int i = 0; i < rightn; i++){
+                    r += '\u0020';
                 }
-                for(int i = 0; i < rightnu; i++){
-                    re += '\u0020';
+                for(int i = 0; i < leftn; i++){
+                    l += '\u0020';
                 }
             }
 
             for(int i = 0; i < temp.length; i++){
-                temp[i] = li + temp[i] + re;
+                temp[i] = l + temp[i] + r;
                 Str.append(temp[i]);
                 if(i < temp.length - 1){
                     Str.append("\n");
@@ -99,13 +99,13 @@ public class Fraction implements Element {
 
         }
         else {
-            for (int i = 0; i < leftnu; i++) {
+            for (int i = 0; i < leftn; i++) {
                 Str.append('\u0020');
             }
 
             Str.append(numerator);
 
-            for (int i = 0; i < rightnu; i++) {
+            for (int i = 0; i < rightn; i++) {
                 Str.append('\u0020');
             }
         }
@@ -118,13 +118,13 @@ public class Fraction implements Element {
 
         Str.append('\n');
 
-        for(int i = 0; i < leftde ; i++){
+        for(int i = 0; i < leftd ; i++){
             Str.append('\u0020');
         }
 
         Str.append(denominator);
 
-        for(int i = 0; i < rightde; i++){
+        for(int i = 0; i < rightd; i++){
             Str.append('\u0020');
         }
         //System.out.println("Zaehler:" + numerator.toString() + ";");
@@ -136,7 +136,7 @@ public class Fraction implements Element {
     @Override
     public int width() {
         if(this.numerator.width() > this.denominator.width()){
-            return this.numerator.width();
+            return this.numerator.width() ;
         }
         return this.denominator.width() ;
     }

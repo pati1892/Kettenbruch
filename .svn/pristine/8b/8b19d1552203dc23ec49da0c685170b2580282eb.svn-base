@@ -136,7 +136,7 @@ public class Fraction implements Element {
     @Override
     public int width() {
         if(this.numerator.width() > this.denominator.width()){
-            return this.numerator.width();
+            return this.numerator.width() ;
         }
         return this.denominator.width() ;
     }

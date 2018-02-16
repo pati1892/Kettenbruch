@@ -1,0 +1,149 @@
+package de.uniwue.jpp.fractions;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class Fraction implements Element {
+
+    private Element numerator;
+    private Element denominator;
+
+    public Fraction(Element numerator, Element denominator){
+        if(numerator == null || denominator == null){
+            throw new NullPointerException();
+        }
+        if(numerator.width() == 0 || denominator.width() == 0){
+            throw new IllegalArgumentException("0");
+        }
+        this.numerator = numerator;
+        this.denominator = denominator;
+    }
+
+    @Override
+    public String toString() {
+
+        int main;
+        int leftn;
+        int rightn;
+        int leftd;
+        int rightd;
+
+        if(this.numerator.width() > this.denominator.width()){
+            if(this.numerator.toString().contains(String.valueOf('\u0028'))){
+                main = this.numerator.width();
+            }else{
+            main = this.numerator.width() + 2;
+            }
+
+        }else{
+            if(this.denominator.toString().contains(String.valueOf('\u0028'))){
+                main = this.denominator.width();
+            }else {
+                main = this.denominator.width() + 2;
+            }
+        }
+        //Zähler zentrieren
+        if((main - this.numerator.width()) % 2 > 0 ){
+            leftn = ((main - this.numerator.width()) + 1)/2;
+            rightn = main - this.numerator.width() - leftn;
+            //System.out.println("ungerade:" + leftn + "," + rightn + " " + this.numerator + " " + "Main:" + main + ";");
+        }else {
+            leftn = (main - this.numerator.width()) / 2;
+            rightn = leftn;
+          //  System.out.println("gerade:" + leftn + "," + rightn + " " + this.numerator + " " + "Main:" + main + ";");
+        }
+
+        //System.out.println(this.numerator + "," + main + "," + leftn + "," +rightn + ";");
+
+        //Nenner zentrieren
+        if((main - this.denominator.width()) % 2 > 0 ){
+            leftd = ((main - this.denominator.width()) + 1)/2;
+            rightd = main - this.denominator.width() - leftd;
+        }else {
+            leftd = (main - this.denominator.width()) / 2;
+            rightd = leftd;
+        }
+        //System.out.println(this.denominator + "," + main + "," + leftn + "," +rightn + ";");
+
+        StringBuilder Str = new StringBuilder();
+
+
+        if(this.numerator.toString().contains("\n")){
+            String[] temp = this.numerator.toString().split("\n");
+            String l = "";
+            String r = "";
+            if(rightn == leftn){
+                for(int i = 0; i < rightn; i++){
+                    r += '\u0020';
+                }
+                l = r;
+            }else{
+                for(int i = 0; i < rightn; i++){
+                    r += '\u0020';
+                }
+                for(int i = 0; i < leftn; i++){
+                    l += '\u0020';
+                }
+            }
+
+            for(int i = 0; i < temp.length; i++){
+                temp[i] = l + temp[i] + r;
+                Str.append(temp[i]);
+                if(i < temp.length - 1){
+                    Str.append("\n");
+                }
+            }
+
+
+
+        }
+        else {
+            for (int i = 0; i < leftn; i++) {
+                Str.append('\u0020');
+            }
+
+            Str.append(numerator);
+
+            for (int i = 0; i < rightn; i++) {
+                Str.append('\u0020');
+            }
+        }
+
+        Str.append('\n');
+
+        for(int i = 0; i < main; i++){
+            Str.append('\u2014');
+        }
+
+        Str.append('\n');
+
+        for(int i = 0; i < leftd ; i++){
+            Str.append('\u0020');
+        }
+
+        Str.append(denominator);
+
+        for(int i = 0; i < rightd; i++){
+            Str.append('\u0020');
+        }
+
+        return Str.toString();
+    }
+
+    @Override
+    public int width() {
+        if(this.numerator.width() > this.denominator.width()){
+            return this.numerator.width() ;
+        }
+        return this.denominator.width() ;
+    }
+
+    @Override
+    public int lineCount() {
+        if(this.numerator.lineCount() > this.denominator.lineCount()){
+            return this.numerator.lineCount();
+        }
+        return this.denominator.lineCount();
+    }
+}
