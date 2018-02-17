@@ -59,7 +59,7 @@ public class Parser {
 
             if(input.charAt(i) == OPEN && counter == 0) {
                 o12index = i;
-                if(oindex >= 0) {
+                if(oindex==0) {
                     operator = input.substring(oindex, i);
                 }
             }
@@ -82,7 +82,6 @@ public class Parser {
                     }
                     else {
                         operant_2 = input.substring(o12index, i + 1);
-                        break;
                     }
                 }
             }
@@ -133,7 +132,7 @@ public class Parser {
         if(index == -1) return null;
         String nenner = input.substring(0, index);
         String zaehler = input.substring(index+1, input.length());
-        System.out.println("zeahler:" + zaehler + " nenner:" + nenner);
+        //System.out.println("zeahler:" + zaehler + "nenner:" + nenner);
         return new String[]{nenner, zaehler};
 
     }
@@ -160,7 +159,7 @@ public class Parser {
     }
 
     public static void main(String[] args) {
-        String test ="(3 / x) * (y / 5) + ((2 / x) / y)";
+        String test ="((( log(y))/(1))! + (( z )/((5x)!)))/ 2x ²/ 2x  - (y)";
         //String o1 = "(( log(y))/(1))";
         //String o2 = "(( z )/((5x)!))";
         //String op = "! + ";
