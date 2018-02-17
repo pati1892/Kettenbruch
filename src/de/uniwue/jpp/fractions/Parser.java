@@ -33,84 +33,54 @@ public class Parser {
             return new Fraction(parse(fraction[0]), parse(fraction[1]));
         }
 
-        String[] operator = findOperator(input);
+       /* String[] operator = findOperator(input);*/
 
         //System.out.println("o:" + parse(operator[0]) + "\n o:-" + operator[1] + "- \no:" + parse(operator[2]));
 
-        return new Operator(parse(operator[0]), operator[1], parse(operator[2]));
+        return findOperator(input);
 
     }
 
-    private static String[] findOperator(String input) {
-        int counter = 0;
-        String operant_1 = "";
-        String operant_2 = "";
+    private static Operator findOperator(String input) {
+        int inputLength = input.length();
+        String[] op = new String[]{"", ""};
+        int opIndex = 0;
         String operator = "";
-        String[] temp = new String[3];
-
-        int o12index = -1;
-        int oindex = -1;
-        int i=0;
-        while(i < input.length()) {
-
-            if(input.charAt(i) != OPEN && oindex < 0){
-                oindex = i;
-            }
-
-
-            if(input.charAt(i) == OPEN && counter == 0) {
-                o12index = i;
-                operator = input.substring(oindex, i);
-            }
-
-            if (input.charAt(i) == OPEN) {
-                counter ++;
-            }else if(input.charAt(i) == CLOSE) {
-                counter--;
-            }
-
-            if (input.charAt(i) == CLOSE) {
-                if (counter == 0 && oindex == 0) {
-                    operant_2 = input.substring(o12index, i + 1);
-                    break;
+        int i = 0;
+        StringBuilder operatorBuilder = new StringBuilder();
+        for(; i<inputLength; i++){
+            char c = input.charAt(i);
+            if(i == 0 && c != OPEN){
+                opIndex = 1;
+                operatorBuilder.append(c);
+            }else if( c == OPEN){
+                StringBuilder sb = new StringBuilder();
+                sb.append(c);
+                while(c != CLOSE){
+                    i++;
+                    c = input.charAt(i);
+                    sb.append(c);
                 }
-                else if(counter == 0 && oindex != 0){
-                    if (operant_1.equals(""))
-                        operant_1 = input.substring(o12index, i + 1);
-                    else {
-                        operant_2 = input.substring(o12index, i + 1);
-                    }
-
-                }
-
+                op[opIndex] = sb.toString();
+                opIndex++;
+            }else{
+                operatorBuilder.append(c);
             }
-            i++;
-        }
-        if(operator == "") {
-            operator = input.replace(operant_1, "");
-            operator = operator.replace(operant_2, "");
-        }
 
-        input = input.replace(operant_1,"");
-        input = input.replace(operant_2,"");
-        input = input.replace(operator,"");
-
-        if(!input.equals("")){
-            temp = findOperator(input);
-            operant_1 = new Operator(parse(operant_1),operator,parse(operant_2)).toString() + temp[0];
-            operator = temp[1];
-            operant_2 = temp[2];
+            if(opIndex > 1) break;
         }
-        System.out.println("o1: " + operant_1);
-        System.out.println(operator);
-        System.out.println("o2: " + operant_2);
+        operator = operatorBuilder.toString();
+        String remainInput = input.replace(input.substring(0, i+1), "");
+        Operator operatorOne =  new Operator(parse(op[0]), operator, parse(op[1]));
 
-        if (operant_2.equals("")) {
-            operant_2 = operant_1;
-            operant_1 = "";
+        if(remainInput != null && remainInput.length()>0){
+            return new Operator(operatorOne, "", findOperator(remainInput));
+        }
+        else{
+            return operatorOne;
         }
 
-        return new String[]{operant_1, operator, operant_2};
+
     }
 
     private static String[] findFraction(String input){
@@ -158,7 +128,7 @@ public class Parser {
     }
 
     public static void main(String[] args) {
-        String test ="(1/x)*(1/x)";
+        String test ="sin(x)*(2/y) + (3/1) /  5";
         //String o1 = "(( log(y))/(1))";
         //String o2 = "(( z )/((5x)!))";
         //String op = "! + ";
