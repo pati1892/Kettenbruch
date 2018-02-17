@@ -42,6 +42,7 @@ public class Parser {
     }
 
     private static Operator findOperator(String input) {
+        int counter = 0;
         int inputLength = input.length();
         String[] op = new String[]{"", ""};
         int opIndex = 0;
@@ -54,11 +55,14 @@ public class Parser {
                 opIndex = 1;
                 operatorBuilder.append(c);
             }else if( c == OPEN){
+                counter ++;
                 StringBuilder sb = new StringBuilder();
                 sb.append(c);
-                while(c != CLOSE){
+                while(counter != 0){
                     i++;
                     c = input.charAt(i);
+                    if(c == OPEN) counter++;
+                    if(c == CLOSE) counter--;
                     sb.append(c);
                 }
                 op[opIndex] = sb.toString();
@@ -128,7 +132,7 @@ public class Parser {
     }
 
     public static void main(String[] args) {
-        String test ="sin(x)*(2/y) + (3/1) /  5";
+        String test ="sin((1/x)/x)*(1/x)";
         //String o1 = "(( log(y))/(1))";
         //String o2 = "(( z )/((5x)!))";
         //String op = "! + ";
