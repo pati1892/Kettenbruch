@@ -132,7 +132,7 @@ public class Parser {
     }
 
     public static void main(String[] args) {
-        String test ="sin((1/x)/x)*(1/x)";
+        String test ="1 / ((3 / x) * (y / 5) + ((2 / x) / y))";
         //String o1 = "(( log(y))/(1))";
         //String o2 = "(( z )/((5x)!))";
         //String op = "! + ";

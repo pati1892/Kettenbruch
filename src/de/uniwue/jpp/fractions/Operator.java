@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.IntStream;
 
 public class Operator implements Element {
+
+    private final static char SPACE = '\u0020';
 
     private Element left;
     private Element right;
@@ -29,99 +32,73 @@ public class Operator implements Element {
 
     @Override
     public String toString() {
-        int height;
-        if(this.left.lineCount() > this.right.lineCount()){
-            height = this.left.lineCount();
-        }else {
-            height = this.right.lineCount();
-        }
+        int height = this.left.lineCount() >= this.right.lineCount() ? this.left.lineCount() : this.right.lineCount();
+
 
         //System.out.println("links: " + this.left.toString());
         //System.out.println("rechts: " + this.right.toString() + ";");
 
         String[] left = this.left.toString().split("\n");
         String[] right = this.right.toString().split("\n");
+
         int diff = this.left.lineCount() - this.right.lineCount();
-        String[] diffarr = new String[Math.abs(diff)];
+
         if(diff < 0){
-            String temp = "";
-            for(int i = 0; i < left.length; i++){
-                temp += '\u0020';
-            }
-            for(int i = 0; i < diffarr.length; i++){
-                diffarr[i] = temp;
-            }
-            List<String> list = new ArrayList<>(Arrays.asList(left));
-
-            int i=0;
-
-            while(i < diffarr.length){
-                if(i % 2 == 0){
-                    list.add(0,diffarr[i]);
-                }else{
-                    list.add(diffarr[i]);
-                }
-                i++;
-            }
-            left = list.toArray(new String[list.size()]);
-
+            left = fillOperator(left, diff, this.left.width());
+        }else{
+            right = fillOperator(right, diff, this.right.width());
         }
 
-        if(diff > 0){
-            String temp = "";
-            for(int i = 0; i < right.length; i++){
-                temp += '\u0020';
-            }
-            for(int i = 0; i < diffarr.length; i++){
-                diffarr[i] = temp;
-            }
+        int index = (height%2 == 0) ? height/2 : (height-1)/2;
 
-            List<String> list = new ArrayList<>(Arrays.asList(right));
-
-            int i=0;
-
-            while(i < temp.length()){
-                if(i % 2 == 0){
-                    list.add(0,diffarr[i]);
-                }else{
-                    list.add(diffarr[i]);
-                }
-                i++;
-            }
-            right = list.toArray(new String[list.size()]);
-        }
-
-        int index;
-
-        if(height % 2 == 0){
+        /*if(height % 2 == 0){
             index = height / 2;
         }else{
             index = (height - 1)/2;
-        }
+        }*/
         StringBuilder str = new StringBuilder();
 
         //System.out.println(this.operator.length());
 
         for(int i = 0; i < height; i++){
-            String operator = "\u0020";
+
+            String operator = String.valueOf(SPACE);
+
             if(i == index){
                 operator = this.operator;
             }
-            str.append(left[i]);
-            if(i != index) {
-                for (int y = 0; y < this.operator.length(); y++) {
 
-                    str.append(operator);
-                }
-            }else
-            {
+            str.append(left[i]);
+
+            if(i != index) {
+                for (int y = 0; y < this.operator.length(); y++)  str.append(operator);
+            }else{
                 str.append(operator);
             }
+
             str.append(right[i]);
-            str.append("\n");
+            if(i<height) str.append("\n");
         }
 
         return str.toString();
+    }
+
+    private static String[] fillOperator(String[] operator, int diff, int elementWidth) {
+        String filler = "";
+        for(int i = 0; i < elementWidth; i++){
+            filler += SPACE;
+        }
+
+        List<String> list = new ArrayList<>(Arrays.asList(operator));
+
+        for(int i = 0; i < Math.abs(diff); i++){
+            if(i % 2 == 0){
+                list.add(0,filler);
+            }else{
+                list.add(filler);
+            }
+        }
+        return list.toArray(new String[list.size()]);
     }
 
     @Override

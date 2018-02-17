@@ -5,6 +5,7 @@
       <change beforePath="" afterPath="$PROJECT_DIR$/src/input.txt" />
       <change beforePath="$PROJECT_DIR$/src/de/uniwue/jpp/fractions/Operator.java" afterPath="$PROJECT_DIR$/src/de/uniwue/jpp/fractions/Operator.java" />
       <change beforePath="$PROJECT_DIR$/src/de/uniwue/jpp/fractions/Parser.java" afterPath="$PROJECT_DIR$/src/de/uniwue/jpp/fractions/Parser.java" />
+      <change beforePath="$PROJECT_DIR$/src/de/uniwue/jpp/fractions/Term.java" afterPath="$PROJECT_DIR$/src/de/uniwue/jpp/fractions/Term.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -44,14 +45,15 @@
       <file leaf-file-name="Term.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/de/uniwue/jpp/fractions/Term.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="697">
-              <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+            <state relative-caret-position="833">
+              <caret line="49" column="5" lean-forward="true" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
               <folding>
                 <element signature="e#788#789#0" expanded="true" />
                 <element signature="e#820#821#0" expanded="true" />
-                <element signature="e#912#913#0" expanded="true" />
-                <element signature="e#956#957#0" expanded="true" />
-                <element signature="e#980#981#0" expanded="true" />
+                <element signature="e#860#861#0" expanded="true" />
+                <element signature="e#901#902#0" expanded="true" />
+                <element signature="e#945#946#0" expanded="true" />
+                <element signature="e#969#970#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -60,7 +62,7 @@
       <file leaf-file-name="Fraction.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/de/uniwue/jpp/fractions/Fraction.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
+            <state relative-caret-position="578">
               <caret line="34" column="5" lean-forward="false" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -74,12 +76,12 @@
       <file leaf-file-name="Operator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/de/uniwue/jpp/fractions/Operator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
-              <caret line="84" column="29" lean-forward="true" selection-start-line="84" selection-start-column="29" selection-end-line="84" selection-end-column="29" />
+            <state relative-caret-position="340">
+              <caret line="79" column="25" lean-forward="false" selection-start-line="79" selection-start-column="25" selection-end-line="79" selection-end-column="25" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3920#3921#0" expanded="true" />
-                <element signature="e#4006#4007#0" expanded="true" />
+                <element signature="e#3310#3311#0" expanded="true" />
+                <element signature="e#3396#3397#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -88,8 +90,8 @@
       <file leaf-file-name="input.txt" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/input.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="18" lean-forward="false" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
+            <state relative-caret-position="391">
+              <caret line="23" column="20" lean-forward="true" selection-start-line="23" selection-start-column="20" selection-end-line="23" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -99,7 +101,7 @@
         <entry file="file://$PROJECT_DIR$/src/de/uniwue/jpp/fractions/Parser.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="363">
-              <caret line="134" column="22" lean-forward="true" selection-start-line="134" selection-start-column="22" selection-end-line="134" selection-end-column="40" />
+              <caret line="134" column="61" lean-forward="false" selection-start-line="134" selection-start-column="61" selection-end-line="134" selection-end-column="61" />
               <folding />
             </state>
           </provider>
@@ -135,8 +137,8 @@
         <option value="$PROJECT_DIR$/src/Operator.java" />
         <option value="$PROJECT_DIR$/src/Parser.java" />
         <option value="$PROJECT_DIR$/src/Element.java" />
-        <option value="$PROJECT_DIR$/src/de/uniwue/jpp/fractions/Term.java" />
         <option value="$PROJECT_DIR$/src/de/uniwue/jpp/fractions/Fraction.java" />
+        <option value="$PROJECT_DIR$/src/de/uniwue/jpp/fractions/Term.java" />
         <option value="$PROJECT_DIR$/src/de/uniwue/jpp/fractions/Operator.java" />
         <option value="$PROJECT_DIR$/src/de/uniwue/jpp/fractions/Parser.java" />
         <option value="$PROJECT_DIR$/src/input.txt" />
@@ -503,27 +505,15 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/de/uniwue/jpp/fractions/Operator.java</url>
-          <line>31</line>
+          <line>34</line>
           <properties />
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/de/uniwue/jpp/fractions/Operator.java</url>
-          <line>32</line>
-          <properties />
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/de/uniwue/jpp/fractions/Operator.java</url>
-          <line>55</line>
-          <properties />
-          <option name="timeStamp" value="20" />
+          <option name="timeStamp" value="26" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="26" />
+      <option name="time" value="28" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -554,8 +544,8 @@
           <caret line="122" column="0" lean-forward="true" selection-start-line="122" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3920#3921#0" expanded="true" />
-            <element signature="e#4006#4007#0" expanded="true" />
+            <element signature="e#3310#3311#0" expanded="true" />
+            <element signature="e#3396#3397#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -575,9 +565,10 @@
           <folding>
             <element signature="e#788#789#0" expanded="true" />
             <element signature="e#820#821#0" expanded="true" />
-            <element signature="e#912#913#0" expanded="true" />
-            <element signature="e#956#957#0" expanded="true" />
-            <element signature="e#980#981#0" expanded="true" />
+            <element signature="e#860#861#0" expanded="true" />
+            <element signature="e#901#902#0" expanded="true" />
+            <element signature="e#945#946#0" expanded="true" />
+            <element signature="e#969#970#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -607,8 +598,8 @@
           <caret line="116" column="54" lean-forward="false" selection-start-line="116" selection-start-column="54" selection-end-line="116" selection-end-column="54" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3920#3921#0" expanded="true" />
-            <element signature="e#4006#4007#0" expanded="true" />
+            <element signature="e#3310#3311#0" expanded="true" />
+            <element signature="e#3396#3397#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -643,9 +634,10 @@
           <folding>
             <element signature="e#788#789#0" expanded="true" />
             <element signature="e#820#821#0" expanded="true" />
-            <element signature="e#912#913#0" expanded="true" />
-            <element signature="e#956#957#0" expanded="true" />
-            <element signature="e#980#981#0" expanded="true" />
+            <element signature="e#860#861#0" expanded="true" />
+            <element signature="e#901#902#0" expanded="true" />
+            <element signature="e#945#946#0" expanded="true" />
+            <element signature="e#969#970#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -676,8 +668,8 @@
           <caret line="122" column="0" lean-forward="true" selection-start-line="122" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3920#3921#0" expanded="true" />
-            <element signature="e#4006#4007#0" expanded="true" />
+            <element signature="e#3310#3311#0" expanded="true" />
+            <element signature="e#3396#3397#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -697,9 +689,10 @@
           <folding>
             <element signature="e#788#789#0" expanded="true" />
             <element signature="e#820#821#0" expanded="true" />
-            <element signature="e#912#913#0" expanded="true" />
-            <element signature="e#956#957#0" expanded="true" />
-            <element signature="e#980#981#0" expanded="true" />
+            <element signature="e#860#861#0" expanded="true" />
+            <element signature="e#901#902#0" expanded="true" />
+            <element signature="e#945#946#0" expanded="true" />
+            <element signature="e#969#970#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -729,8 +722,8 @@
           <caret line="141" column="0" lean-forward="false" selection-start-line="141" selection-start-column="0" selection-end-line="141" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3920#3921#0" expanded="true" />
-            <element signature="e#4006#4007#0" expanded="true" />
+            <element signature="e#3310#3311#0" expanded="true" />
+            <element signature="e#3396#3397#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -777,9 +770,10 @@
           <folding>
             <element signature="e#788#789#0" expanded="true" />
             <element signature="e#820#821#0" expanded="true" />
-            <element signature="e#912#913#0" expanded="true" />
-            <element signature="e#956#957#0" expanded="true" />
-            <element signature="e#980#981#0" expanded="true" />
+            <element signature="e#860#861#0" expanded="true" />
+            <element signature="e#901#902#0" expanded="true" />
+            <element signature="e#945#946#0" expanded="true" />
+            <element signature="e#969#970#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -798,8 +792,8 @@
           <caret line="137" column="37" lean-forward="false" selection-start-line="137" selection-start-column="37" selection-end-line="137" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3920#3921#0" expanded="true" />
-            <element signature="e#4006#4007#0" expanded="true" />
+            <element signature="e#3310#3311#0" expanded="true" />
+            <element signature="e#3396#3397#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -819,9 +813,10 @@
           <folding>
             <element signature="e#788#789#0" expanded="true" />
             <element signature="e#820#821#0" expanded="true" />
-            <element signature="e#912#913#0" expanded="true" />
-            <element signature="e#956#957#0" expanded="true" />
-            <element signature="e#980#981#0" expanded="true" />
+            <element signature="e#860#861#0" expanded="true" />
+            <element signature="e#901#902#0" expanded="true" />
+            <element signature="e#945#946#0" expanded="true" />
+            <element signature="e#969#970#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -851,8 +846,8 @@
           <caret line="116" column="54" lean-forward="false" selection-start-line="116" selection-start-column="54" selection-end-line="116" selection-end-column="54" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3920#3921#0" expanded="true" />
-            <element signature="e#4006#4007#0" expanded="true" />
+            <element signature="e#3310#3311#0" expanded="true" />
+            <element signature="e#3396#3397#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -887,9 +882,10 @@
           <folding>
             <element signature="e#788#789#0" expanded="true" />
             <element signature="e#820#821#0" expanded="true" />
-            <element signature="e#912#913#0" expanded="true" />
-            <element signature="e#956#957#0" expanded="true" />
-            <element signature="e#980#981#0" expanded="true" />
+            <element signature="e#860#861#0" expanded="true" />
+            <element signature="e#901#902#0" expanded="true" />
+            <element signature="e#945#946#0" expanded="true" />
+            <element signature="e#969#970#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -920,8 +916,8 @@
           <caret line="122" column="0" lean-forward="true" selection-start-line="122" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3920#3921#0" expanded="true" />
-            <element signature="e#4006#4007#0" expanded="true" />
+            <element signature="e#3310#3311#0" expanded="true" />
+            <element signature="e#3396#3397#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -949,21 +945,22 @@
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_151/src.zip!/java/lang/StringBuilder.java" />
     <entry file="file://$PROJECT_DIR$/src/de/uniwue/jpp/fractions/Term.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
-          <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+        <state relative-caret-position="833">
+          <caret line="49" column="5" lean-forward="true" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
           <folding>
             <element signature="e#788#789#0" expanded="true" />
             <element signature="e#820#821#0" expanded="true" />
-            <element signature="e#912#913#0" expanded="true" />
-            <element signature="e#956#957#0" expanded="true" />
-            <element signature="e#980#981#0" expanded="true" />
+            <element signature="e#860#861#0" expanded="true" />
+            <element signature="e#901#902#0" expanded="true" />
+            <element signature="e#945#946#0" expanded="true" />
+            <element signature="e#969#970#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/de/uniwue/jpp/fractions/Fraction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
+        <state relative-caret-position="578">
           <caret line="34" column="5" lean-forward="false" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -975,12 +972,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/de/uniwue/jpp/fractions/Operator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="84" column="29" lean-forward="true" selection-start-line="84" selection-start-column="29" selection-end-line="84" selection-end-column="29" />
+        <state relative-caret-position="340">
+          <caret line="79" column="25" lean-forward="false" selection-start-line="79" selection-start-column="25" selection-end-line="79" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3920#3921#0" expanded="true" />
-            <element signature="e#4006#4007#0" expanded="true" />
+            <element signature="e#3310#3311#0" expanded="true" />
+            <element signature="e#3396#3397#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -988,15 +985,15 @@
     <entry file="file://$PROJECT_DIR$/src/de/uniwue/jpp/fractions/Parser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="363">
-          <caret line="134" column="22" lean-forward="true" selection-start-line="134" selection-start-column="22" selection-end-line="134" selection-end-column="40" />
+          <caret line="134" column="61" lean-forward="false" selection-start-line="134" selection-start-column="61" selection-end-line="134" selection-end-column="61" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/input.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="18" lean-forward="false" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
+        <state relative-caret-position="391">
+          <caret line="23" column="20" lean-forward="true" selection-start-line="23" selection-start-column="20" selection-end-line="23" selection-end-column="20" />
           <folding />
         </state>
       </provider>

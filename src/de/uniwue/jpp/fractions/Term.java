@@ -41,7 +41,7 @@ public class Term implements Element {
 
     @Override
     public int width() {
-        return this.term.toString().length();
+        return this.term.length();
     }
 
     @Override
