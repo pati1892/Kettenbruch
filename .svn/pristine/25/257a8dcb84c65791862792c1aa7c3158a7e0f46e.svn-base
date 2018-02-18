@@ -1,6 +1,5 @@
 package de.uniwue.jpp.fractions;
 
-
 import java.util.regex.Pattern;
 
 public class Parser {
@@ -10,9 +9,9 @@ public class Parser {
     private static final char CLOSE = '\u0029';
 
 
-
     public static Element parse(String input){
-
+        System.out.println("parse: ");
+        System.out.println(input);
         if(input.length() - input.replace(String.valueOf(OPEN),"").length() != input.length() - input.replace(String.valueOf(CLOSE),"").length()){
             throw new IllegalArgumentException();
         }
@@ -31,9 +30,17 @@ public class Parser {
 
         String[] fraction = findFraction(input);
         if(fraction != null && fraction.length == 2){
+            //System.out.println(";zaehler:" + fraction[0] +";nenner:" + fraction[1]);
+            //System.out.println(parse(fraction[0]) + "---"+ parse(fraction[1]));
             return new Fraction(parse(fraction[0]), parse(fraction[1]));
         }
+
+       /* String[] operator = findOperator(input);*/
+
+        //System.out.println("o:" + parse(operator[0]) + "\n o:-" + operator[1] + "- \no:" + parse(operator[2]));
+
         return findOperator(input);
+
     }
 
     private static Operator findOperator(String input) {
@@ -41,7 +48,7 @@ public class Parser {
         int inputLength = input.length();
         String[] op = new String[]{"", ""};
         int opIndex = 0;
-        String operator;
+        String operator = "";
         int i = 0;
         StringBuilder operatorBuilder = new StringBuilder();
         for(; i<inputLength; i++){
@@ -70,11 +77,10 @@ public class Parser {
         }
         int subIndex = inputLength<=1 || i == inputLength ? i: i+1;
         operator = operatorBuilder.toString();
-
         String remainInput = input.replace(input.substring(0, subIndex), "");
         Operator operatorOne =  new Operator(parse(op[0]), operator, parse(op[1]));
 
-        if(remainInput.length()>0){
+        if(remainInput != null && remainInput.length()>0){
             return new Operator(operatorOne, "", findOperator(remainInput));
         }
         else{
@@ -102,7 +108,9 @@ public class Parser {
         if(index == -1) return null;
         String nenner = input.substring(0, index);
         String zaehler = input.substring(index+1, input.length());
+        //System.out.println("zeahler:" + zaehler + "nenner:" + nenner);
         return new String[]{nenner, zaehler};
+
     }
 
     private static String removeBracket(String input){
@@ -122,7 +130,16 @@ public class Parser {
             return removeBracket(input.substring(1, input.length()-1));
         }
         else{
-            return input.trim();
+            return input;
         }
+    }
+
+    public static void main(String[] args) {
+        String test2 ="( sin( 2x ) ⊕ (y)))     /(((c/(15))/(5))";
+        String test ="(∫(∬(∫((b!)/(x)))!)/( sin( 2x ) ⊕ (y)))/(((c/(15))/(5))/(((-( z )) ∓ y/(π))!))";
+        //String o1 = "(( log(y))/(1))";
+        //String o2 = "(( z )/((5x)!))";
+        //String op = "! + ";
+        System.out.print(parse(test));
     }
 }

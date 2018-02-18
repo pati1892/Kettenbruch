@@ -45,10 +45,14 @@ public class Fraction implements Element {
         if((breiteBruch - this.numerator.width()) % 2 > 0 ){
             rightnu = ((breiteBruch - this.numerator.width()) + 1)/2;
             leftnu = breiteBruch - this.numerator.width() - rightnu;
+            //System.out.println("ungerade:" + rightnu + "," + leftnu + " " + this.numerator + " " + "Main:" + breiteBruch + ";");
         }else {
             rightnu = (breiteBruch - this.numerator.width()) / 2;
             leftnu = rightnu;
+          //  System.out.println("gerade:" + rightnu + "," + leftnu + " " + this.numerator + " " + "Main:" + breiteBruch + ";");
         }
+
+        //System.out.println("Zaehler: " + this.numerator + "," + breiteBruch + "," + rightnu + "," +leftnu + ";");
 
         //Nenner zentrieren
         if((breiteBruch - this.denominator.width()) % 2 > 0 ){
@@ -58,6 +62,7 @@ public class Fraction implements Element {
             rightde = (breiteBruch - this.denominator.width()) / 2;
             leftde = rightde;
         }
+        //System.out.println("Nenner: " + this.denominator + "," + breiteBruch + "," + rightde + "," +leftde + ";" + "BREITE:" + this.denominator.width());
 
         StringBuilder Str = new StringBuilder();
 
@@ -72,6 +77,9 @@ public class Fraction implements Element {
 
         adjustFractionElement(this.denominator, rightde, leftde, Str);
 
+        //System.out.println("Zaehler:" + numerator.toString() + ";");
+        //System.out.println("nenner:" +  denominator.toString() + ";");
+        //System.out.println(Str.toString());
         return Str.toString();
     }
 
@@ -122,6 +130,28 @@ public class Fraction implements Element {
 
     @Override
     public int lineCount() {
+        /**int lines = 0;
+        for (Element i: this ) {
+            if (i.toString().contains("\n")) {
+                lines++;
+            } else {
+                lines++;
+            }
+        }
+
+        String[] n = this.numerator.toString().split("\n");
+        String[] d = this.denominator.toString().split("\n");
+
+
+
+        if(n.length > d.length){
+            System.out.println(n.length);
+            return n.length;
+        }else{
+            System.out.println(d.length);
+            return d.length;
+        }*/
+        //System.out.println(this.numerator.lineCount() + this.denominator.lineCount() + 1);
         return this.numerator.lineCount() + this.denominator.lineCount() + 1;
     }
 
@@ -136,6 +166,7 @@ public class Fraction implements Element {
 
     @Override
     public int hashCode() {
+
         return Objects.hash(numerator, denominator);
     }
 }
